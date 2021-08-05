@@ -9,15 +9,29 @@ class ScanModel {
     this.id,
     this.tipo,
     required this.valor,
-  });
+  }) {
+    if (this.valor.contains('http')) {
+      this.tipo = 'http';
+    } else {
+      this.tipo = 'geo';
+    }
+  }
 
   int? id;
   String? tipo;
   String valor;
 
-  factory ScanModel.fromJson(String str) => ScanModel.fromMap(json.decode(str));
+  factory ScanModel.fromJson(Map<String, dynamic> json) => new ScanModel(
+        id: json["id"],
+        tipo: json["tipo"],
+        valor: json["valor"],
+      );
 
-  String toJson() => json.encode(toMap());
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "tipo": tipo,
+        "valor": valor,
+      };
 
   factory ScanModel.fromMap(Map<String, dynamic> json) => ScanModel(
         id: json["id"],
