@@ -19,7 +19,7 @@ class ScanButton extends StatelessWidget {
             "#3D8BEF", "Cancelar", true, ScanMode.QR);
 
         // String barcodeScanRes = "geo:19.056995054194875,-98.18358363303103";
-        if (barcodeScanRes == -1) {
+        if (barcodeScanRes == '-1') {
           return;
         }
         // print(barcodeScanRes);
